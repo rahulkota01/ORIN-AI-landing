@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team | Orin by RO Ecosystem</title>
+    <meta name="description" content="Meet the founding team, board of directors, and scientific advisors behind Orin AI — building the future of bioscience research tools in India.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #F7F5F0;
+            --bg-alt: #FFFFFF;
+            --text-main: #1a1a1a;
+            --text-sec: #6B7280;
+            --dark-section: #111111;
+            --accent: #4A90D9;
+            --accent-dark: #2563b0;
+            --border: #E5E0D8;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: var(--font-head);
+            font-weight: normal;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── ANNOUNCEMENT BAR ── */
+        #announcement-bar {
+            background-color: var(--dark-section);
+            color: #fff;
+            font-size: 13px;
+            text-align: center;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        #announcement-close {
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            background-color: var(--bg-page);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo-box { display: flex; flex-direction: column; }
+        .nav-logo { font-family: var(--font-head); font-size: 22px; color: var(--text-main); line-height: 1; }
+        .nav-sub { font-size: 10px; color: var(--text-sec); margin-top: 2px; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { font-size: 14px; color: var(--text-main); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-sec); }
+        .nav-links a.active {
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 24px;
+            position: relative;
+            top: 13px;
+        }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .btn-signin { font-size: 14px; color: var(--text-main); }
+        .btn-early {
+            background-color: var(--text-main);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        .btn-early:hover { opacity: 0.85; }
+
+        /* ── HERO ── */
+        .hero {
+            background-color: var(--dark-section);
+            padding: 140px 0 100px;
+            text-align: center;
+        }
+        .hero-label {
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero-title {
+            font-size: 64px;
+            color: #ffffff;
+            line-height: 1.15;
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: #9CA3AF;
+            max-width: 600px;
+            margin: 24px auto 0;
+            line-height: 1.75;
+        }
+
+        /* ── SHARED SECTION LABELS ── */
+        .section-eyebrow {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .section-heading {
+            font-family: var(--font-head);
+            font-size: 48px;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            font-size: 16px;
+            color: var(--text-sec);
+            line-height: 1.8;
+            max-width: 560px;
+        }
+
+        /* ── IN-PAGE TABS ── */
+        .tabs-nav-section {
+            background-color: var(--bg-alt);
+            padding: 40px 0 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .team-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding-bottom: 20px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-sec);
+            cursor: pointer;
+            padding: 10px 24px;
+            border-radius: 30px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(0,0,0,0.03);
+        }
+        .tab-btn.active {
+            color: var(--accent);
+            background: rgba(74,144,217,0.08);
+            border: 1px solid rgba(74,144,217,0.2);
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+            animation: fadeInTab 0.5s ease forwards;
+        }
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ══════════════════════════════════════
+           SECTION 1 — LEADERSHIP TEAM
+        ══════════════════════════════════════ */
+        .leadership-section {
+            background-color: var(--bg-page);
+            padding: 100px 0 80px;
+        }
+        .leadership-header { margin-bottom: 60px; }
+
+        .leadership-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Individual team card */
+        .ldr-card {
+            width: 200px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.03);
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+            cursor: default;
+            border: 1px solid var(--border);
+        }
+        .ldr-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .ldr-img-wrap {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            background-color: #e8e4dd;
+        }
+        .ldr-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .ldr-card:hover .ldr-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        /* Fallback initials avatar when no image */
+        .ldr-initials {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-size: 52px;
+            color: #b0aaff;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2b55 100%);
+            letter-spacing: 2px;
+        }
+
+        .ldr-info {
+            padding: 16px 20px 20px;
+            text-align: center;
+        }
+        .ldr-name {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+        .ldr-role {
+            font-size: 12px;
+            color: var(--text-sec);
+            line-height: 1.5;
+        }
+
+        /* ══════════════════════════════════════
+           SECTION 2 — BOARD OF DIRECTORS
+        ══════════════════════════════════════ */
+        .board-section {
+            background-color: var(--bg-alt);
+            padding: 100px 0;
+        }
+        .board-header { margin-bottom: 60px; }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 800px;
+        }
+
+        .board-card {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 36px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .board-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 6px 28px rgba(74,144,217,0.10);
+        }
+
+        .board-badge {
+            display: inline-block;
+            background-color: rgba(74,144,217,0.1);
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .board-name {
+            font-family: var(--font-body);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+        .board-role {
+            font-size: 14px;
+            color: var(--text-sec);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        .board-divider {
+            height: 1px;
+            background-color: var(--border);
+            margin-bottom: 20px;
+        }
+        .board-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .board-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-sec);
+        }
+        .board-meta-item svg {
+            flex-shrink: 0;
+            color: var(--accent);
+        }
+        .board-meta-item a {
+            color: var(--accent);
+            transition: opacity 0.2s;
+        }
+        .board-meta-item a:hover { opacity: 0.75; }
+
+        /* ══════════════════════════════════════
+           SECTION 3 — SCIENTIFIC ADVISORS
+        ══════════════════════════════════════ */
+        .advisors-section {
+            background-color: var(--dark-section);
+            padding: 100px 0;
+            text-align: center;
+        }
+        .advisors-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .advisors-heading {
+            font-family: var(--font-head);
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        .advisors-body {
+            font-size: 18px;
+            color: #9CA3AF;
+            max-width: 620px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        .advisors-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-advisor-primary {
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .btn-advisor-primary:hover { opacity: 0.88; }
+        .btn-advisor-outline {
+            border: 1px solid #444;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .btn-advisor-outline:hover { background-color: rgba(255,255,255,0.06); }
+
+        .advisors-email-note {
+            margin-top: 32px;
+            font-size: 13px;
+            color: #6B7280;
+        }
+        .advisors-email-note a {
+            color: var(--accent);
+            transition: opacity 0.2s;
+        }
+        .advisors-email-note a:hover { opacity: 0.75; }
+
+        /* ── FOOTER ── */
+        footer {
+            background-color: var(--dark-section);
+            border-top: 1px solid #222;
+            padding: 60px 0 40px;
+        }
+        .footer-top { display: flex; justify-content: space-between; }
+        .footer-logo-box { display: flex; flex-direction: column; }
+        .f-logo { font-family: var(--font-head); font-size: 28px; color: #fff; line-height: 1; }
+        .f-sub { font-size: 11px; color: var(--text-sec); margin: 4px 0 8px; }
+        .f-tagline { font-size: 13px; color: var(--text-sec); font-style: italic; }
+        .footer-links-grid { display: flex; gap: 80px; }
+        .fl-col { display: flex; flex-direction: column; gap: 12px; }
+        .fl-title { font-size: 13px; color: #fff; font-weight: 500; margin-bottom: 8px; }
+        .fl-col a { font-size: 13px; color: #9CA3AF; transition: color 0.2s; }
+        .fl-col a:hover { color: #fff; }
+        .footer-bottom {
+            border-top: 1px solid #222;
+            margin-top: 40px;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-sec);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 992px) {
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .board-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-title { font-size: 38px; }
+            .section-heading { font-size: 36px; }
+            .advisors-heading { font-size: 36px; }
+            .leadership-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+            .footer-top { flex-direction: column; gap: 40px; }
+            .footer-links-grid { flex-wrap: wrap; gap: 40px; }
+        }
+
+        @media (max-width: 480px) {
+            .advisors-cta-group { flex-direction: column; align-items: center; }
+            .advisors-cta-group a { width: 100%; text-align: center; }
+        }
+    
+        /* Sign In Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+            display: none; align-items: center; justify-content: center; z-index: 2000;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.show { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--bg-page, #F7F5F0); padding: 40px; border-radius: 12px;
+            text-align: center; max-width: 400px; position: relative;
+            transform: translateY(20px); transition: transform 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .modal-overlay.show .modal-content { transform: translateY(0); }
+        .modal-close {
+            position: absolute; top: 12px; right: 16px; font-size: 24px;
+            cursor: pointer; color: var(--text-sec, #6B7280);
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 3px solid rgba(0,0,0,0.1);
+            border-top: 3px solid var(--accent, #4A90D9); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto 24px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .modal-title { font-family: var(--font-head, 'DM Serif Display', serif); font-size: 24px; color: var(--text-main, #1a1a1a); margin-bottom: 12px; }
+        .modal-text { font-family: var(--font-body, 'Inter', sans-serif); font-size: 15px; color: var(--text-sec, #6B7280); line-height: 1.6; }
+
+    
+        /* ============================================
+           FULL MOBILE / TABLET RESPONSIVE OVERHAUL
+           ============================================ */
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--text-main, #1a1a1a);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        /* Mobile nav drawer */
+        .mobile-nav-open .nav-links {
+            display: flex !important;
+        }
+
+        /* ---- Tablet (≤ 992px) ---- */
+        @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .hero-left, .hero-center {
+                width: 100%;
+            }
+            .hero-right { display: none; }
+            .hero-center {
+                height: 220px;
+            }
+            .opp-grid, .founding-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .wn-grid, .ask-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .problem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .solution-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---- Mobile (≤ 768px) ---- */
+        @media (max-width: 768px) {
+            /* Navbar */
+            .nav-inner {
+                height: auto;
+                flex-wrap: nowrap;
+                padding: 14px 0;
+                position: relative;
+            }
+            .nav-logo-box {
+                flex-grow: 1;
+            }
+            .hamburger {
+                display: flex;
+                order: 3;
+            }
+            .nav-links {
+                display: none !important;
+                flex-direction: column;
+                width: 100%;
+                order: 4;
+                background: var(--bg-page, #F7F5F0);
+                border-top: 1px solid var(--border, #E5E0D8);
+                padding: 16px 0 8px;
+                gap: 4px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                padding: 12px 24px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            }
+            .nav-links.open {
+                display: flex !important;
+            }
+            .nav-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border, #E5E0D8);
+                font-size: 15px;
+            }
+            .nav-links a:last-child { border-bottom: none; }
+            .nav-right {
+                order: 2;
+                gap: 12px;
+            }
+            .btn-early {
+                display: none;
+            }
+
+            /* Hero */
+            .hero { padding: 80px 0 60px; }
+            .hero-inner { flex-direction: column; gap: 24px; }
+            .hero-left { width: 100%; }
+            .hero-center { width: 100%; height: 180px; }
+            .hero-desc { max-width: 100%; }
+            .scroller-item.active { font-size: 40px; }
+            .scroller-item.prev-1,
+            .scroller-item.next-1,
+            .scroller-item.prev-2,
+            .scroller-item.next-2 { font-size: 32px; }
+
+            /* Sections */
+            .section-title, .cta-title, .hero-title { font-size: 36px !important; }
+            .section-sub, .hero-sub { font-size: 15px; }
+            .pt-title { font-size: 32px; }
+
+            /* Grids */
+            .problem-grid,
+            .pricing-grid,
+            .opp-grid,
+            .wn-grid,
+            .ask-grid,
+            .founding-team-grid {
+                grid-template-columns: 1fr;
+            }
+            .solution-list { grid-template-columns: 1fr; }
+
+            /* Stats */
+            .stats-row { flex-direction: column; gap: 32px; }
+            .stat-divider { display: none; }
+            .st-num { font-size: 48px; }
+
+            /* CTA Form */
+            .cta-form { flex-direction: column; align-items: stretch; }
+            .cta-input { width: 100%; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions a, .btn-hero { width: 100%; text-align: center; }
+
+            /* Footer */
+            .footer-top { flex-direction: column; gap: 32px; }
+            .footer-links-grid { flex-wrap: wrap; gap: 32px; }
+            .f-logo { font-size: 22px; }
+            .fl-col { min-width: 40%; }
+
+            /* Price cards */
+            .price-card { padding: 28px 24px; }
+            .ac-amount { font-size: 36px !important; }
+
+            /* Ask cards */
+            .ask-card { padding: 32px 24px; }
+
+            /* Contact form */
+            .contact-form { margin: 32px 16px 0; }
+
+            /* Traction layout */
+            .traction-layout { max-width: 100%; }
+        }
+
+        /* ---- Small phones (≤ 480px) ---- */
+        @media (max-width: 480px) {
+            .section-title, .cta-title, .hero-title { font-size: 28px !important; line-height: 1.2; }
+            .btn-early { display: inline-block; font-size: 12px; padding: 8px 14px; }
+            .scroller-item.active { font-size: 32px; }
+            .hero { padding: 60px 0 40px; }
+            .container { padding: 0 16px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Sign In Modal -->
+    <div id="signin-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close">&times;</div>
+            <div class="spinner"></div>
+            <div class="modal-title">Access Restricted</div>
+            <div class="modal-text">We are currently providing early access to a select group of researchers. Please email the team to request access, or wait for the official public announcement.</div>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank" class="btn-early" style="display:inline-block; margin-top:24px;">Email Team ORIN</a>
+        </div>
+    </div>
+
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div id="announcement-bar">
+        Orin is now in Early Access — Built for India's 7 lakh+ bioscience researchers
+        <div id="announcement-close">&times;</div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container nav-inner">
+            <a href="landing.html" class="nav-logo-box">
+                <span class="nav-logo">Orin</span>
+                <span class="nav-sub">by RO Ecosystem</span>
+            </a>
+            <div class="nav-links">
+                <a href="landing.html">Platform</a>
+                <a href="technology.html">Technology</a>
+                <a href="landing.html#pricing">Pricing</a>
+                <a href="#" class="active">Team</a>
+                <a href="investors.html">Investors</a>
+                <a href="landing.html">About</a>
+            </div>
+            <div class="nav-right">
+                <a href="landing.html" class="btn-signin">Sign In</a>
+                <a href="landing.html#cta" class="btn-early">Get Early Access</a>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero fade-in">
+        <div class="container">
+            <div class="hero-label">OUR PEOPLE</div>
+            <h1 class="hero-title">The team behind Orin.</h1>
+            <p class="hero-sub">A group of scientists, engineers, and builders united by one mission — making world-class bioscience research tools accessible to every researcher in India.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         SECTION 1: LEADERSHIP TEAM
+    ══════════════════════════════════ -->
+    <section class="leadership-section">
+        <div class="container">
+            <div class="leadership-header fade-in">
+                <div class="section-eyebrow">Leadership Team</div>
+                <h2 class="section-heading">Meet our founders.</h2>
+                <p class="section-sub">The people driving Orin's vision, product, and growth — every day.</p>
+            </div>
+
+            <div class="leadership-grid">
+
+                <!-- Rahul Kota -->
+                <div class="ldr-card fade-in">
+                    <div class="ldr-img-wrap">
+                        <img src="rahul.jpg" alt="Rahul Kota">
+                    </div>
+                    <div class="ldr-info">
+                        <div class="ldr-name">Rahul Kota</div>
+                        <div class="ldr-role">Founder &amp; CEO</div>
+                    </div>
+                </div>
+
+                <!-- Rihan Kota -->
+                <div class="ldr-card fade-in" style="transition-delay: 80ms;">
+                    <div class="ldr-img-wrap">
+                        <img src="rihan.jpg" alt="Rihan Kota">
+                    </div>
+                    <div class="ldr-info">
+                        <div class="ldr-name">Rihan Kota</div>
+                        <div class="ldr-role">Co-Founder &amp; Strategic Advisor</div>
+                    </div>
+                </div>
+
+                <!-- Arkoparno Das -->
+                <div class="ldr-card fade-in" style="transition-delay: 160ms;">
+                    <div class="ldr-img-wrap">
+                        <img src="arkoparno.jpg" alt="Arkoparno Das">
+                    </div>
+                    <div class="ldr-info">
+                        <div class="ldr-name">Arkoparno Das</div>
+                        <div class="ldr-role">Co-Founder &amp; Chief Scientific Officer</div>
+                    </div>
+                </div>
+
+                <!-- Rushi Chaganti -->
+                <div class="ldr-card fade-in" style="transition-delay: 240ms;">
+                    <div class="ldr-img-wrap">
+                        <img src="rushi.jpg" alt="Rushi Chaganti">
+                    </div>
+                    <div class="ldr-info">
+                        <div class="ldr-name">Rushi Chaganti</div>
+                        <div class="ldr-role">Co-Founder &amp; Chief Technology Officer</div>
+                    </div>
+                </div>
+
+                <!-- Ajay Andhukuri -->
+                <div class="ldr-card fade-in" style="transition-delay: 320ms;">
+                    <div class="ldr-img-wrap">
+                        <img src="ajay.jpg" alt="Ajay Andhukuri">
+                    </div>
+                    <div class="ldr-info">
+                        <div class="ldr-name">Ajay Andhukuri</div>
+                        <div class="ldr-role">Co-Founder &amp; Marketing &amp; Social Media Lead</div>
+                    </div>
+                </div>
+
+            </div><!-- /leadership-grid -->
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         TEAM TABS NAVIGATION
+    ══════════════════════════════════ -->
+    <section class="tabs-nav-section">
+        <div class="container">
+            <div class="team-tabs fade-in">
+                <button class="tab-btn active" onclick="openTab('board')">Board of Directors</button>
+                <button class="tab-btn" onclick="openTab('advisors')">Scientific Advisors</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         SECTION 2: BOARD OF DIRECTORS
+    ══════════════════════════════════ -->
+    <section class="board-section tab-pane active" id="board-tab">
+        <div class="container">
+            <div class="board-header fade-in">
+                <div class="section-eyebrow">Board of Directors</div>
+                <h2 class="section-heading">Governance &amp; oversight.</h2>
+                <p class="section-sub">The board guides Orin's strategic direction and ensures long-term accountability across RO Ecosystem.</p>
+            </div>
+
+            <div class="board-grid">
+
+                <!-- Rahul Kota -->
+                <div class="board-card fade-in">
+                    <div class="board-badge">Board Member</div>
+                    <div class="board-name">Rahul Kota</div>
+                    <div class="board-role">Founder &amp; CEO, RO Ecosystem</div>
+                    <div class="board-divider"></div>
+                    <div class="board-meta">
+                        <div class="board-meta-item">
+                            <!-- Email icon -->
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank">orchestration.ro@gmail.com</a>
+                        </div>
+                        <div class="board-meta-item">
+                            <!-- Email icon -->
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <a href="mailto:rahulkota.0101@gmail.com">rahulkota.0101@gmail.com</a>
+                        </div>
+                        <div class="board-meta-item">
+                            <!-- Building icon -->
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+                            <span>RO Ecosystem — Parent Company</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rihan Kota -->
+                <div class="board-card fade-in" style="transition-delay: 100ms;">
+                    <div class="board-badge">Board Member</div>
+                    <div class="board-name">Rihan Kota</div>
+                    <div class="board-role">Co-Founder &amp; Board Advisor, RO Ecosystem</div>
+                    <div class="board-divider"></div>
+                    <div class="board-meta">
+                        <div class="board-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank">orchestration.ro@gmail.com</a>
+                        </div>
+                        <div class="board-meta-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+                            <span>RO Ecosystem — Parent Company</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /board-grid -->
+        </div>
+    </section><!-- /board-section -->
+
+    <!-- ══════════════════════════════════
+         SECTION 3: SCIENTIFIC ADVISORS
+    ══════════════════════════════════ -->
+    <section class="advisors-section tab-pane" id="advisors-tab">
+        <div class="container fade-in">
+            <div class="advisors-eyebrow">Scientific Advisors</div>
+            <h2 class="advisors-heading">Join us in building the future.</h2>
+            <p class="advisors-body">We are currently looking for Scientific Advisors to join Orin AI in building the future of AI in healthcare and bioscience research. If you are a researcher, clinician, or domain expert — we'd love to hear from you.</p>
+            <div class="advisors-cta-group">
+                <a href="mailto:orchestration.ro@gmail.com?subject=Scientific Advisor Inquiry — Orin AI" class="btn-advisor-primary" id="advisor-apply-btn">Apply / Contact Us &rarr;</a>
+                <a href="investors.html" class="btn-advisor-outline">View Investor Page</a>
+            </div>
+            <div class="advisors-email-note">
+                Or reach us directly at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank">orchestration.ro@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo-box">
+                    <div class="f-logo">Orin</div>
+                    <div class="f-sub">by RO Ecosystem</div>
+                    <div class="f-tagline">Illuminating your research.</div>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="fl-col">
+                        <div class="fl-title">Product</div>
+                        <a href="landing.html">Platform</a>
+                        <a href="landing.html#pricing">Pricing</a>
+                        <a href="landing.html#cta">Early Access</a>
+                    </div>
+                    <div class="fl-col">
+                        <div class="fl-title">Company</div>
+                        <a href="landing.html">About</a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank">Contact</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="fl-col">
+                        <div class="fl-title">Follow</div>
+                        <a href="#">Twitter/X</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 RO Ecosystem. Built in India &#127470;&#127475;
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Tab Navigation
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            
+            if(tabId === 'board') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+            }
+            document.getElementById(tabId + '-tab').classList.add('active');
+        }
+
+        // Announcement Bar Close
+        document.getElementById('announcement-close').addEventListener('click', function () {
+            document.getElementById('announcement-bar').style.display = 'none';
+        });
+
+        // Intersection Observer — fade-ins
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+    <script>
+        // Sign In Modal Logic
+        document.querySelectorAll('.btn-signin').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modal = document.getElementById('signin-modal');
+                if(!modal) return;
+                modal.style.display = 'flex';
+                // Trigger reflow
+                void modal.offsetWidth;
+                modal.classList.add('show');
+            });
+        });
+        
+        const modalClose = document.querySelector('.modal-close');
+        if(modalClose) {
+            modalClose.addEventListener('click', function() {
+                const modal = document.getElementById('signin-modal');
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            });
+        }
+        
+        const signinModal = document.getElementById('signin-modal');
+        if(signinModal) {
+            signinModal.addEventListener('click', function(e) {
+                if(e.target === this) {
+                    this.classList.remove('show');
+                    setTimeout(() => this.style.display = 'none', 300);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+                this.classList.toggle('active');
+                const spans = this.querySelectorAll('span');
+                if (this.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    spans[0].style.transform = '';
+                    spans[1].style.opacity = '';
+                    spans[2].style.transform = '';
+                }
+            });
+            // Close menu on link click
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    hamburger.classList.remove('active');
+                    hamburger.querySelectorAll('span').forEach(s => s.style.transform = s.style.opacity = '');
+                });
+            });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orin by RO Ecosystem | Illuminating your research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #F7F5F0;
+            --text-main: #1a1a1a;
+            --text-sec: #6B7280;
+            --card-bg: #FFFFFF;
+            --dark-section: #111111;
+            --accent: #4A90D9;
+            --border: #E5E0D8;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: var(--font-head);
+            font-weight: normal;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- SECTION 1: Announcement Bar --- */
+        #announcement-bar {
+            background-color: var(--dark-section);
+            color: #ffffff;
+            font-size: 13px;
+            text-align: center;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #announcement-close {
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        /* --- SECTION 2: Navbar --- */
+        nav {
+            background-color: var(--bg-page);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo-box {
+            display: flex;
+            align-items: baseline;
+            gap: 3px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-head);
+            font-size: 22px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+
+        .nav-sub {
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: var(--text-sec);
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-main);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-sec);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-signin {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .btn-early {
+            background-color: var(--text-main);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-early:hover {
+            opacity: 0.9;
+        }
+
+        /* --- SECTION 3: Hero --- */
+        .hero {
+            padding: 120px 0 80px;
+            background-color: var(--bg-page);
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-left {
+            width: 40%;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--text-sec);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: var(--text-sec);
+            line-height: 1.8;
+            max-width: 280px;
+            margin: 20px 0 32px;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .btn-hero:hover {
+            opacity: 0.9;
+        }
+
+        .hero-center {
+            width: 60%;
+            position: relative;
+            height: 350px;
+            /* Space for the stacked scrolling text */
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-scroller {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .scroller-item {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            font-family: var(--font-head);
+            line-height: 1.1;
+            transition: all 0.8s ease;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        /* Scroller States */
+        /* Center (Active) */
+        .scroller-item.active {
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 72px;
+            color: var(--text-main);
+            opacity: 1;
+            z-index: 3;
+        }
+
+        /* Top Ghost 1 */
+        .scroller-item.prev-1 {
+            top: 15%;
+            transform: translateY(-50%);
+            font-size: 64px;
+            color: #D1C9BE;
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        /* Top Ghost 2 */
+        .scroller-item.prev-2 {
+            top: 0%;
+            transform: translateY(-50%);
+            font-size: 64px;
+            color: #D1C9BE;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        /* Bottom Ghost 1 */
+        .scroller-item.next-1 {
+            top: 85%;
+            transform: translateY(-50%);
+            font-size: 64px;
+            color: #D1C9BE;
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        /* Bottom Ghost 2 */
+        .scroller-item.next-2 {
+            top: 100%;
+            transform: translateY(-50%);
+            font-size: 64px;
+            color: #D1C9BE;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .hero-right {
+            position: absolute;
+            right: 24px;
+            top: 120px;
+        }
+
+        .btn-ghost-outline {
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .btn-ghost-outline:hover {
+            background-color: var(--text-main);
+            color: #ffffff;
+        }
+
+        /* --- SECTION 4: Trust Bar --- */
+        .trust-bar {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+            background-color: var(--bg-page);
+        }
+
+        .trust-inner {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .trust-label {
+            color: var(--text-sec);
+            font-size: 13px;
+        }
+
+        .trust-pill {
+            color: var(--text-sec);
+            font-size: 13px;
+            background-color: rgba(107, 114, 128, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        /* --- SECTION 5: Problem --- */
+        .problem-section {
+            background-color: var(--card-bg);
+            padding: 100px 0;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--text-sec);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 52px;
+            color: var(--text-main);
+            line-height: 1.2;
+            white-space: pre-line;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .problem-card {
+            background-color: var(--bg-page);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .pc-number {
+            font-family: var(--font-head);
+            font-size: 48px;
+            color: var(--border);
+            line-height: 1;
+        }
+
+        .pc-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 16px 0 12px;
+        }
+
+        .pc-text {
+            font-size: 15px;
+            color: var(--text-sec);
+            line-height: 1.7;
+        }
+
+        /* --- SECTION 6: Solution --- */
+        .solution-section {
+            background-color: var(--bg-page);
+            padding: 100px 0;
+        }
+
+        .solution-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .solution-item {
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+        }
+
+        .solution-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--text-main);
+            color: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .si-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .si-desc {
+            font-size: 14px;
+            color: var(--text-sec);
+            line-height: 1.6;
+        }
+
+        /* --- SECTION 7: Scrolling Banner --- */
+        .scrolling-banner {
+            background-color: var(--dark-section);
+            padding: 32px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .banner-track {
+            display: inline-block;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        .banner-text {
+            font-family: var(--font-head);
+            font-size: 28px;
+            color: #ffffff;
+            display: inline-block;
+            padding-right: 50px;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* --- SECTION 8: Pricing --- */
+        .pricing-section {
+            background-color: var(--card-bg);
+            padding: 100px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .price-card {
+            background-color: var(--bg-page);
+            border-radius: 16px;
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .price-card.pro {
+            background-color: var(--text-main);
+            color: #ffffff;
+        }
+
+        .pro-badge {
+            position: absolute;
+            top: -12px;
+            left: 36px;
+            background-color: var(--accent);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pr-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .price-card.pro .pr-title {
+            color: #ffffff;
+        }
+
+        .pr-price {
+            font-family: var(--font-head);
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .pr-desc {
+            font-size: 14px;
+            color: var(--text-sec);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .price-card.pro .pr-desc {
+            color: #9CA3AF;
+        }
+
+        .pr-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .btn-ghost-dark {
+            border: 1px solid #D1C9BE;
+            color: var(--text-main);
+        }
+
+        .btn-ghost-dark:hover {
+            border-color: var(--text-sec);
+        }
+
+        .btn-white {
+            background-color: #ffffff;
+            color: var(--text-main);
+        }
+
+        .btn-white:hover {
+            opacity: 0.9;
+        }
+
+        /* --- SECTION 9: Stats --- */
+        .stats-section {
+            background-color: var(--bg-page);
+            padding: 80px 0;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0 40px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 60px;
+            background-color: var(--border);
+        }
+
+        .st-num {
+            font-family: var(--font-head);
+            font-size: 64px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+
+        .st-label {
+            font-size: 14px;
+            color: var(--text-sec);
+            margin-top: 8px;
+        }
+
+        .quote-box {
+            text-align: center;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .quote-text {
+            font-family: var(--font-head);
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text-main);
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .quote-author {
+            font-size: 13px;
+            color: var(--text-sec);
+        }
+
+        /* --- SECTION 10: CTA --- */
+        .cta-section {
+            background-color: var(--dark-section);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 52px;
+            color: #ffffff;
+        }
+
+        .cta-sub {
+            font-size: 16px;
+            color: #9CA3AF;
+            margin-top: 16px;
+        }
+
+        .cta-form {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .cta-input {
+            width: 300px;
+            background-color: #1F1F1F;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            font-family: var(--font-body);
+        }
+
+        .cta-input::placeholder {
+            color: #6B7280;
+        }
+
+        .cta-btn {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: opacity 0.2s;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+        }
+
+        .cta-free {
+            font-size: 13px;
+            color: var(--text-sec);
+            margin-top: 16px;
+        }
+
+        #cta-success {
+            display: none;
+            color: #ffffff;
+            font-size: 18px;
+            margin-top: 40px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-section);
+            border-top: 1px solid #222222;
+            padding: 60px 0 40px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-logo-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-logo-row {
+            display: flex;
+            align-items: baseline;
+            gap: 3px;
+        }
+
+        .f-logo {
+            font-family: var(--font-head);
+            font-size: 28px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .f-sub {
+            font-size: 13px;
+            color: var(--text-sec);
+            margin: 0;
+        }
+
+        .f-tagline {
+            font-size: 13px;
+            color: var(--text-sec);
+            font-style: italic;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .fl-col {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fl-title {
+            font-size: 13px;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .fl-col a {
+            font-size: 13px;
+            color: #9CA3AF;
+            transition: color 0.2s;
+        }
+
+        .fl-col a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222222;
+            margin-top: 40px;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-sec);
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+            }
+
+            .hero-left,
+            .hero-center {
+                width: 100%;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .problem-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .solution-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            
+
+
+            .scroller-item.active {
+                font-size: 42px;
+            }
+
+            .scroller-item.prev-1,
+            .scroller-item.next-1,
+            .scroller-item.prev-2,
+            .scroller-item.next-2 {
+                font-size: 36px;
+            }
+
+            .section-title,
+            .cta-title {
+                font-size: 40px;
+            }
+
+            .problem-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .stat-divider {
+                display: none;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-links-grid {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+
+            .cta-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-input {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    
+        /* Sign In Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+            display: none; align-items: center; justify-content: center; z-index: 2000;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.show { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--bg-page, #F7F5F0); padding: 40px; border-radius: 12px;
+            text-align: center; max-width: 400px; position: relative;
+            transform: translateY(20px); transition: transform 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .modal-overlay.show .modal-content { transform: translateY(0); }
+        .modal-close {
+            position: absolute; top: 12px; right: 16px; font-size: 24px;
+            cursor: pointer; color: var(--text-sec, #6B7280);
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 3px solid rgba(0,0,0,0.1);
+            border-top: 3px solid var(--accent, #4A90D9); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto 24px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .modal-title { font-family: var(--font-head, 'DM Serif Display', serif); font-size: 24px; color: var(--text-main, #1a1a1a); margin-bottom: 12px; }
+        .modal-text { font-family: var(--font-body, 'Inter', sans-serif); font-size: 15px; color: var(--text-sec, #6B7280); line-height: 1.6; }
+
+    
+        /* ============================================
+           FULL MOBILE / TABLET RESPONSIVE OVERHAUL
+           ============================================ */
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--text-main, #1a1a1a);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        /* Mobile nav drawer */
+        .mobile-nav-open .nav-links {
+            display: flex !important;
+        }
+
+        /* ---- Tablet (≤ 992px) ---- */
+        @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .hero-left, .hero-center {
+                width: 100%;
+            }
+            .hero-right { display: none; }
+            .hero-center {
+                height: 220px;
+            }
+            .opp-grid, .founding-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .wn-grid, .ask-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .problem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .solution-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---- Mobile (≤ 768px) ---- */
+        @media (max-width: 768px) {
+            /* Navbar */
+            .nav-inner {
+                height: auto;
+                flex-wrap: nowrap;
+                padding: 14px 0;
+                position: relative;
+            }
+            .nav-logo-box {
+                flex-grow: 1;
+            }
+            .hamburger {
+                display: flex;
+                order: 3;
+            }
+            .nav-links {
+                display: none !important;
+                flex-direction: column;
+                width: 100%;
+                order: 4;
+                background: var(--bg-page, #F7F5F0);
+                border-top: 1px solid var(--border, #E5E0D8);
+                padding: 16px 0 8px;
+                gap: 4px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                padding: 12px 24px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            }
+            .nav-links.open {
+                display: flex !important;
+            }
+            .nav-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border, #E5E0D8);
+                font-size: 15px;
+            }
+            .nav-links a:last-child { border-bottom: none; }
+            .nav-right {
+                order: 2;
+                gap: 12px;
+            }
+            .btn-early {
+                display: none;
+            }
+
+            /* Hero */
+            .hero { padding: 80px 0 60px; }
+            .hero-inner { flex-direction: column; gap: 24px; }
+            .hero-left { width: 100%; }
+            .hero-center { width: 100%; height: 180px; }
+            .hero-desc { max-width: 100%; }
+            .scroller-item.active { font-size: 40px; }
+            .scroller-item.prev-1,
+            .scroller-item.next-1,
+            .scroller-item.prev-2,
+            .scroller-item.next-2 { font-size: 32px; }
+
+            /* Sections */
+            .section-title, .cta-title, .hero-title { font-size: 36px !important; }
+            .section-sub, .hero-sub { font-size: 15px; }
+            .pt-title { font-size: 32px; }
+
+            /* Grids */
+            .problem-grid,
+            .pricing-grid,
+            .opp-grid,
+            .wn-grid,
+            .ask-grid,
+            .founding-team-grid {
+                grid-template-columns: 1fr;
+            }
+            .solution-list { grid-template-columns: 1fr; }
+
+            /* Stats */
+            .stats-row { flex-direction: column; gap: 32px; }
+            .stat-divider { display: none; }
+            .st-num { font-size: 48px; }
+
+            /* CTA Form */
+            .cta-form { flex-direction: column; align-items: stretch; }
+            .cta-input { width: 100%; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions a, .btn-hero { width: 100%; text-align: center; }
+
+            /* Footer */
+            .footer-top { flex-direction: column; gap: 32px; }
+            .footer-links-grid { flex-wrap: wrap; gap: 32px; }
+            .f-logo { font-size: 22px; }
+            .fl-col { min-width: 40%; }
+
+            /* Price cards */
+            .price-card { padding: 28px 24px; }
+            .ac-amount { font-size: 36px !important; }
+
+            /* Ask cards */
+            .ask-card { padding: 32px 24px; }
+
+            /* Contact form */
+            .contact-form { margin: 32px 16px 0; }
+
+            /* Traction layout */
+            .traction-layout { max-width: 100%; }
+        }
+
+        /* ---- Small phones (≤ 480px) ---- */
+        @media (max-width: 480px) {
+            .section-title, .cta-title, .hero-title { font-size: 28px !important; line-height: 1.2; }
+            .btn-early { display: inline-block; font-size: 12px; padding: 8px 14px; }
+            .scroller-item.active { font-size: 32px; }
+            .hero { padding: 60px 0 40px; }
+            .container { padding: 0 16px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Sign In Modal -->
+    <div id="signin-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close">&times;</div>
+            <div class="spinner"></div>
+            <div class="modal-title">Access Restricted</div>
+            <div class="modal-text">We are currently providing early access to a select group of researchers. Please email the team to request access, or wait for the official public announcement.</div>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank" class="btn-early" style="display:inline-block; margin-top:24px;">Email Team ORIN</a>
+        </div>
+    </div>
+
+
+    <!-- SECTION 1 -->
+    <div id="announcement-bar">
+        Orin is now in Early Access — Built for India's 7 lakh+ bioscience researchers
+        <div id="announcement-close">&times;</div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo-box">
+                <span class="nav-logo">ORIN AI</span>
+                <span class="nav-sub">by <a href="https://roecosystem.in" target="_blank"
+                        style="text-decoration: none; color: inherit;">RO Ecosystem</a></span>
+            </a>
+            <div class="nav-links">
+                <a href="#">Platform</a>
+                <a href="technology.html">Technology</a>
+                <a href="#pricing">Pricing</a>
+                <a href="team.html">Team</a>
+                <a href="investors.html">Investors</a>
+                <a href="#">About</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="btn-signin">Sign In</a>
+                <a href="#cta" class="btn-early">Get Early Access</a>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- SECTION 3 -->
+    <section class="hero">
+        <div class="container relative">
+            <div class="hero-inner fade-in">
+                <div class="hero-left">
+                    <div class="hero-label">BIOSCIENCE AI COPILOT</div>
+                    <p class="hero-desc">India's first domain-specific AI research partner — built for pharmacy
+                        students, PhD researchers, and biotech labs.</p>
+                    <div style="display: flex; gap: 16px; align-items: center;">
+                        <a href="#cta" class="btn-hero">Get Early Access &rarr;</a>
+                        <a href="#solution"
+                            style="background: transparent; border: 1px solid #1a1a1a; color: #1a1a1a; padding: 12px 24px; border-radius: 6px; font-size: 15px; display: inline-block; text-decoration: none; font-weight: 500;">Explore
+                            Platform &rarr;</a>
+                    </div>
+                </div>
+                <div class="hero-center">
+                    <div class="hero-scroller" id="scroller">
+                        <div class="scroller-item">Literature Review</div>
+                        <div class="scroller-item">Drug Discovery</div>
+                        <div class="scroller-item">Molecular Docking</div>
+                        <div class="scroller-item">ADMET Prediction</div>
+                        <div class="scroller-item">Research Synthesis</div>
+                        <div class="scroller-item">Paper Analysis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SECTION 5 -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-label fade-in">THE PROBLEM</div>
+            <h2 class="section-title fade-in">Research tools built for the West.<br>Not for you.</h2>
+
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="pc-number">01</div>
+                    <div class="pc-title">Too Expensive</div>
+                    <div class="pc-text">SciFinder costs ₹1,00,000+/year. Built for Western institutions, not Indian
+                        students.</div>
+                </div>
+                <div class="problem-card fade-in" style="transition-delay: 100ms;">
+                    <div class="pc-number">02</div>
+                    <div class="pc-title">No Indian Context</div>
+                    <div class="pc-text">Global AI ignores GPAT, Indian drug regulations, and regional research
+                        patterns.</div>
+                </div>
+                <div class="problem-card fade-in" style="transition-delay: 200ms;">
+                    <div class="pc-number">03</div>
+                    <div class="pc-title">Disconnected Workflow</div>
+                    <div class="pc-text">Literature, databases, and molecular tools live in completely separate places.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="solution-section" id="solution">
+        <div class="container">
+            <div class="section-label fade-in">THE SOLUTION</div>
+            <h2 class="section-title fade-in">One intelligent research partner.<br>Everything you need.</h2>
+
+            <div class="solution-list">
+                <div class="solution-item fade-in">
+                    <div class="solution-icon">R</div>
+                    <div>
+                        <div class="si-title">Research Search</div>
+                        <div class="si-desc">Autonomously searches PubMed, Semantic Scholar, and OpenAlex for relevant
+                            papers.</div>
+                    </div>
+                </div>
+                <div class="solution-item fade-in" style="transition-delay: 100ms;">
+                    <div class="solution-icon">D</div>
+                    <div>
+                        <div class="si-title">Drug Intelligence</div>
+                        <div class="si-desc">Fetches drug properties, interactions, and bioactivity from PubChem and
+                            ChEMBL.</div>
+                    </div>
+                </div>
+                <div class="solution-item fade-in" style="transition-delay: 50ms;">
+                    <div class="solution-icon">P</div>
+                    <div>
+                        <div class="si-title">Document Analysis</div>
+                        <div class="si-desc">Reads and extracts insights from uploaded research PDFs instantly.</div>
+                    </div>
+                </div>
+                <div class="solution-item fade-in" style="transition-delay: 150ms;">
+                    <div class="solution-icon">M</div>
+                    <div>
+                        <div class="si-title">Molecular Analysis</div>
+                        <div class="si-desc">Computes Lipinski rule of 5, ADMET predictions from SMILES strings.</div>
+                    </div>
+                </div>
+                <div class="solution-item fade-in" style="transition-delay: 100ms;">
+                    <div class="solution-icon">L</div>
+                    <div>
+                        <div class="si-title">Indian Languages</div>
+                        <div class="si-desc">Understands and responds in Hindi, Telugu, Tamil, Kannada, and more.</div>
+                    </div>
+                </div>
+                <div class="solution-item fade-in" style="transition-delay: 200ms;">
+                    <div class="solution-icon">S</div>
+                    <div>
+                        <div class="si-title">Scientific Reasoning</div>
+                        <div class="si-desc">Every answer includes Mechanism, Evidence, Clinical Relevance, and
+                            Limitations.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <div class="scrolling-banner">
+        <div class="banner-track">
+            <div class="banner-text">
+                Illuminating your research &middot; Drug Discovery &middot; Literature Review &middot; Molecular Docking
+                &middot; Indian Languages &middot; ADMET Prediction &middot; Research Synthesis &middot;
+                Illuminating your research &middot; Drug Discovery &middot; Literature Review &middot; Molecular Docking
+                &middot; Indian Languages &middot; ADMET Prediction &middot; Research Synthesis &middot;
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 8 -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-label fade-in">PRICING</div>
+            <h2 class="section-title fade-in">Priced for Indian researchers.<br>Not Western budgets.</h2>
+
+            <div class="pricing-grid">
+                <div class="price-card fade-in">
+                    <div class="pr-title">Free</div>
+                    <div class="pr-price">₹0<span
+                            style="font-size: 16px; font-family: var(--font-body); color: var(--text-sec); font-weight: normal;">/month</span>
+                    </div>
+                    <div class="pr-desc">10 queries/day, English only.</div>
+                    <a href="#cta" class="pr-btn btn-ghost-dark">Start Free</a>
+                </div>
+                <div class="price-card fade-in" style="transition-delay: 100ms;">
+                    <div class="pr-title">Student Pro</div>
+                    <div class="pr-price">TBA<span
+                            style="font-size: 16px; font-family: var(--font-body); color: var(--text-sec); font-weight: normal;">/month</span>
+                    </div>
+                    <div class="pr-desc">Unlimited queries, voice, PDF, all languages.(changes may apply)</div>
+                    <a href="#cta" class="pr-btn btn-ghost-dark">Get Pro</a>
+                </div>
+                <div class="price-card fade-in" style="transition-delay: 200ms;">
+                    <div class="pr-title">Lab Plan</div>
+                    <div class="pr-price">TBA<span
+                            style="font-size: 16px; font-family: var(--font-body); color: var(--text-sec); font-weight: normal;">/month</span>
+                    </div>
+                    <div class="pr-desc">API access, docking tools, batch processing.</div>
+                    <a href="#cta" class="pr-btn btn-ghost-dark">Contact Sales</a>
+                </div>
+                <div class="price-card fade-in" style="transition-delay: 300ms;">
+                    <div class="pr-title">Institutional</div>
+                    <div class="pr-price">TBA<span
+                            style="font-size: 16px; font-family: var(--font-body); color: var(--text-sec); font-weight: normal;">/year</span>
+                    </div>
+                    <div class="pr-desc">Multi-user, shared workspace, admin dashboard.</div>
+                    <a href="#cta" class="pr-btn btn-ghost-dark">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-row fade-in">
+                <div class="stat-item">
+                    <div class="st-num">7 Lakh+</div>
+                    <div class="st-label">Potential researchers in India</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="st-num">₹TBA</div>
+                    <div class="st-label">Will be Revealed Soon.!</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="st-num">10+</div>
+                    <div class="st-label">Scientific databases integrated</div>
+                </div>
+            </div>
+
+            <div class="quote-box fade-in">
+                <div class="quote-text">"Orin is what every Indian Bioscience student needed but never had."</div>
+                <div class="quote-author">&mdash; Team RO Ecosystem </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10 -->
+    <section class="cta-section" id="cta">
+        <div class="container fade-in">
+            <h2 class="cta-title">Start illuminating your research.</h2>
+            <div class="cta-sub">Join researchers and students getting early access to Orin.</div>
+
+            <form id="cta-form" class="cta-form">
+                <input type="email" name="email" class="cta-input" placeholder="Enter your email" required>
+                <button type="submit" class="cta-btn">Request Early Access</button>
+            </form>
+            <div id="cta-success">You're on the list. We'll reach out soon &#10003;</div>
+
+            <div class="cta-free">Free to start. No credit card required.</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo-box">
+                    <div class="footer-logo-row">
+                        <div class="f-logo">ORIN AI</div>
+                        <div class="f-sub">by <a href="https://roecosystem.in" target="_blank"
+                                style="text-decoration: none; color: inherit;">RO Ecosystem</a></div>
+                    </div>
+                    <div class="f-tagline">Illuminating your research.</div>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="fl-col">
+                        <div class="fl-title">Product</div>
+                        <a href="#">Platform</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#cta">Early Access</a>
+                    </div>
+                    <div class="fl-col">
+                        <div class="fl-title">Company</div>
+                        <a href="#">About</a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank">Contact</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="fl-col">
+                        <div class="fl-title">Follow</div>
+                        <a href="#">Twitter/X</a>
+                        <a href="https://www.linkedin.com/company/research-orchestation-ro-ecosystem/?viewAsMember=true"
+                            target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 RO Ecosystem. Built in India &#127470;&#127475;
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Announcement Bar Close
+        document.getElementById('announcement-close').addEventListener('click', function () {
+            document.getElementById('announcement-bar').style.display = 'none';
+        });
+
+        // Intersection Observer for fade-ins
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Form Submission
+        document.getElementById('cta-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const form = e.target;
+            fetch('https://formspree.io/f/xlgojgqb', {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(() => {
+                form.style.display = 'none';
+                document.getElementById('cta-success').style.display = 'block';
+            }).catch(() => alert("Something went wrong. Please try again."));
+        });
+
+        // Hero Text Scroller Animation
+        const scrollerItems = document.querySelectorAll('.scroller-item');
+        let currentIndex = 0;
+        const totalItems = scrollerItems.length;
+
+        function updateScroller() {
+            scrollerItems.forEach((item, index) => {
+                item.className = 'scroller-item'; // reset classes
+
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
+                    item.classList.add('prev-1');
+                } else if (index === (currentIndex - 2 + totalItems) % totalItems) {
+                    item.classList.add('prev-2');
+                } else if (index === (currentIndex + 1) % totalItems) {
+                    item.classList.add('next-1');
+                } else if (index === (currentIndex + 2) % totalItems) {
+                    item.classList.add('next-2');
+                }
+            });
+            currentIndex = (currentIndex + 1) % totalItems;
+        }
+
+        // Initialize and start loop
+        updateScroller();
+        setInterval(updateScroller, 2500);
+
+    </script>
+
+    <script>
+        // Sign In Modal Logic
+        document.querySelectorAll('.btn-signin').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modal = document.getElementById('signin-modal');
+                if(!modal) return;
+                modal.style.display = 'flex';
+                // Trigger reflow
+                void modal.offsetWidth;
+                modal.classList.add('show');
+            });
+        });
+        
+        const modalClose = document.querySelector('.modal-close');
+        if(modalClose) {
+            modalClose.addEventListener('click', function() {
+                const modal = document.getElementById('signin-modal');
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            });
+        }
+        
+        const signinModal = document.getElementById('signin-modal');
+        if(signinModal) {
+            signinModal.addEventListener('click', function(e) {
+                if(e.target === this) {
+                    this.classList.remove('show');
+                    setTimeout(() => this.style.display = 'none', 300);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+                this.classList.toggle('active');
+                const spans = this.querySelectorAll('span');
+                if (this.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    spans[0].style.transform = '';
+                    spans[1].style.opacity = '';
+                    spans[2].style.transform = '';
+                }
+            });
+            // Close menu on link click
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    hamburger.classList.remove('active');
+                    hamburger.querySelectorAll('span').forEach(s => s.style.transform = s.style.opacity = '');
+                });
+            });
+        }
+    </script>
+
+</body>
+
+</html>

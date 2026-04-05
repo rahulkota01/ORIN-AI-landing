@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investors | Orin by RO Ecosystem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #F7F5F0;
+            --text-main: #1a1a1a;
+            --text-sec: #6B7280;
+            --card-bg: #FFFFFF;
+            --dark-section: #111111;
+            --accent: #4A90D9;
+            --border: #E5E0D8;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: var(--font-head);
+            font-weight: normal;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- SECTION 1: Announcement Bar --- */
+        #announcement-bar {
+            background-color: var(--dark-section);
+            color: #ffffff;
+            font-size: 13px;
+            text-align: center;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #announcement-close {
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        /* --- SECTION 2: Navbar --- */
+        nav {
+            background-color: var(--bg-page);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo {
+            font-family: var(--font-head);
+            font-size: 22px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+
+        .nav-sub {
+            font-family: var(--font-body);
+            font-size: 10px;
+            color: var(--text-sec);
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-main);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-sec);
+        }
+
+        .nav-links a.active {
+            color: var(--text-main);
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 24px;
+            position: relative;
+            top: 13px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-signin {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .btn-early {
+            background-color: var(--text-main);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-early:hover {
+            opacity: 0.9;
+        }
+
+        /* --- SECTION 3: Hero --- */
+        .hero {
+            background-color: var(--dark-section);
+            padding: 140px 0 100px;
+            text-align: center;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            color: #ffffff;
+            line-height: 1.15;
+            white-space: pre-line;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: #9CA3AF;
+            max-width: 580px;
+            margin: 24px auto 0;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-outline-white {
+            border: 1px solid #444444;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .btn-outline-white:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-stats {
+            margin-top: 32px;
+            font-size: 13px;
+            color: var(--text-sec);
+        }
+
+        /* Common Section Layouts */
+        .section-label {
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .section-label.blue {
+            color: var(--accent);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 52px;
+            color: var(--text-main);
+            line-height: 1.2;
+            white-space: pre-line;
+        }
+
+        .section-title.white {
+            color: #ffffff;
+        }
+
+        .section-sub {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-sec);
+            max-width: 600px;
+            margin: 20px auto 0;
+            line-height: 1.8;
+        }
+
+        /* --- SECTION 4: The Opportunity --- */
+        .opportunity-section {
+            background-color: var(--bg-page);
+            padding: 100px 0;
+        }
+
+        .opp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .opp-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 48px 40px;
+            text-align: center;
+        }
+
+        .oc-stat {
+            font-family: var(--font-head);
+            font-size: 56px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+
+        .oc-label {
+            font-size: 14px;
+            color: var(--text-sec);
+            margin-top: 8px;
+        }
+
+        /* --- SECTION 5: What We've Built --- */
+        .traction-section {
+            background-color: var(--card-bg);
+            padding: 100px 0;
+        }
+
+        .traction-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin-top: 60px;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tr-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tr-item {
+            display: flex;
+            gap: 16px;
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+
+        .tr-check {
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .tr-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .tr-desc {
+            font-size: 14px;
+            color: var(--text-sec);
+            line-height: 1.6;
+        }
+
+        /* --- FOUNDING TEAM SECTION --- */
+        .founding-team-section {
+            background-color: var(--bg-page);
+            padding: 100px 0;
+        }
+
+        .founding-team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .ft-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .ft-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .ft-initials {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4A90D9 0%, #2563b0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: var(--font-head);
+            font-size: 24px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .ft-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-family: var(--font-body);
+        }
+
+        .ft-role {
+            font-size: 13px;
+            color: var(--text-sec);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 992px) {
+            .founding-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .founding-team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- SECTION 6: Why Now --- */
+        .why-now-section {
+            background-color: var(--bg-page);
+            padding: 100px 0;
+        }
+
+        .wn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .wn-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .wn-num {
+            font-family: var(--font-head);
+            font-size: 48px;
+            color: var(--border);
+            line-height: 1;
+        }
+
+        .wn-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin: 16px 0 12px;
+        }
+
+        .wn-desc {
+            font-size: 15px;
+            color: var(--text-sec);
+            line-height: 1.7;
+        }
+
+        /* --- SECTION 7: Investment Ask --- */
+        .ask-section {
+            background-color: var(--dark-section);
+            padding: 100px 0;
+        }
+
+        .ask-sub {
+            color: #9CA3AF;
+        }
+
+        .ask-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .ask-card {
+            background-color: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 16px;
+            padding: 48px;
+        }
+
+        .ac-label {
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .ac-amount {
+            font-family: var(--font-head);
+            font-size: 48px;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 32px;
+        }
+
+        .ac-divider {
+            height: 1px;
+            background-color: #30363D;
+            margin-bottom: 32px;
+        }
+
+        .ac-list {
+            list-style: none;
+        }
+
+        .ac-list li {
+            font-size: 14px;
+            color: #9CA3AF;
+            line-height: 2;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .ac-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .btn-full {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 32px;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s, background-color 0.2s;
+        }
+
+        .btn-brand {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn-brand:hover {
+            opacity: 0.9;
+        }
+
+        .btn-outline-brand {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline-brand:hover {
+            background-color: rgba(74, 144, 217, 0.05);
+        }
+
+        /* --- SECTION 8: Partner Wall --- */
+        .partner-section {
+            background-color: var(--bg-page);
+            padding: 80px 0;
+        }
+
+        .pt-title {
+            font-family: var(--font-head);
+            font-size: 42px;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        .pt-sub {
+            font-size: 15px;
+            color: var(--text-sec);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .pt-box {
+            border: 2px dashed var(--border);
+            border-radius: 16px;
+            padding: 60px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .pt-box-title {
+            font-family: var(--font-head);
+            font-size: 24px;
+            font-style: italic;
+            color: #D1C9BE;
+            margin-bottom: 8px;
+        }
+
+        .pt-box-desc {
+            font-size: 14px;
+            color: var(--text-sec);
+            margin-bottom: 24px;
+        }
+
+        .btn-ghost-outline {
+            display: inline-block;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .btn-ghost-outline:hover {
+            background-color: var(--text-main);
+            color: #ffffff;
+        }
+
+        /* --- SECTION 9: Contact Form --- */
+        .contact-section {
+            background-color: #ffffff;
+            padding: 100px 0;
+        }
+
+        .contact-form {
+            max-width: 560px;
+            margin: 48px auto 0;
+        }
+
+        .cf-input,
+        .cf-select,
+        .cf-textarea {
+            width: 100%;
+            background-color: var(--bg-page);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .cf-input:focus,
+        .cf-select:focus,
+        .cf-textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .cf-textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .cf-submit {
+            width: 100%;
+            background-color: var(--text-main);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-bottom: 16px;
+        }
+
+        .cf-submit:hover {
+            opacity: 0.9;
+        }
+
+        .cf-alt {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-sec);
+        }
+
+        #cf-success {
+            display: none;
+            font-family: var(--font-head);
+            font-size: 24px;
+            color: var(--text-main);
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-section);
+            border-top: 1px solid #222222;
+            padding: 60px 0 40px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-logo-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .f-logo {
+            font-family: var(--font-head);
+            font-size: 28px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .f-sub {
+            font-size: 11px;
+            color: var(--text-sec);
+            margin: 4px 0 8px;
+        }
+
+        .f-tagline {
+            font-size: 13px;
+            color: var(--text-sec);
+            font-style: italic;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .fl-col {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fl-title {
+            font-size: 13px;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .fl-col a {
+            font-size: 13px;
+            color: #9CA3AF;
+            transition: color 0.2s;
+        }
+
+        .fl-col a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222222;
+            margin-top: 40px;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-sec);
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            .founding-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            
+
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .opp-grid,
+            .wn-grid,
+            .ask-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-links-grid {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+        }
+    
+        /* Sign In Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+            display: none; align-items: center; justify-content: center; z-index: 2000;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.show { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--bg-page, #F7F5F0); padding: 40px; border-radius: 12px;
+            text-align: center; max-width: 400px; position: relative;
+            transform: translateY(20px); transition: transform 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .modal-overlay.show .modal-content { transform: translateY(0); }
+        .modal-close {
+            position: absolute; top: 12px; right: 16px; font-size: 24px;
+            cursor: pointer; color: var(--text-sec, #6B7280);
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 3px solid rgba(0,0,0,0.1);
+            border-top: 3px solid var(--accent, #4A90D9); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto 24px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .modal-title { font-family: var(--font-head, 'DM Serif Display', serif); font-size: 24px; color: var(--text-main, #1a1a1a); margin-bottom: 12px; }
+        .modal-text { font-family: var(--font-body, 'Inter', sans-serif); font-size: 15px; color: var(--text-sec, #6B7280); line-height: 1.6; }
+
+    
+        /* ============================================
+           FULL MOBILE / TABLET RESPONSIVE OVERHAUL
+           ============================================ */
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--text-main, #1a1a1a);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        /* Mobile nav drawer */
+        .mobile-nav-open .nav-links {
+            display: flex !important;
+        }
+
+        /* ---- Tablet (≤ 992px) ---- */
+        @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .hero-left, .hero-center {
+                width: 100%;
+            }
+            .hero-right { display: none; }
+            .hero-center {
+                height: 220px;
+            }
+            .opp-grid, .founding-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .wn-grid, .ask-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .problem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .solution-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---- Mobile (≤ 768px) ---- */
+        @media (max-width: 768px) {
+            /* Navbar */
+            .nav-inner {
+                height: auto;
+                flex-wrap: nowrap;
+                padding: 14px 0;
+                position: relative;
+            }
+            .nav-logo-box {
+                flex-grow: 1;
+            }
+            .hamburger {
+                display: flex;
+                order: 3;
+            }
+            .nav-links {
+                display: none !important;
+                flex-direction: column;
+                width: 100%;
+                order: 4;
+                background: var(--bg-page, #F7F5F0);
+                border-top: 1px solid var(--border, #E5E0D8);
+                padding: 16px 0 8px;
+                gap: 4px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                padding: 12px 24px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            }
+            .nav-links.open {
+                display: flex !important;
+            }
+            .nav-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border, #E5E0D8);
+                font-size: 15px;
+            }
+            .nav-links a:last-child { border-bottom: none; }
+            .nav-right {
+                order: 2;
+                gap: 12px;
+            }
+            .btn-early {
+                display: none;
+            }
+
+            /* Hero */
+            .hero { padding: 80px 0 60px; }
+            .hero-inner { flex-direction: column; gap: 24px; }
+            .hero-left { width: 100%; }
+            .hero-center { width: 100%; height: 180px; }
+            .hero-desc { max-width: 100%; }
+            .scroller-item.active { font-size: 40px; }
+            .scroller-item.prev-1,
+            .scroller-item.next-1,
+            .scroller-item.prev-2,
+            .scroller-item.next-2 { font-size: 32px; }
+
+            /* Sections */
+            .section-title, .cta-title, .hero-title { font-size: 36px !important; }
+            .section-sub, .hero-sub { font-size: 15px; }
+            .pt-title { font-size: 32px; }
+
+            /* Grids */
+            .problem-grid,
+            .pricing-grid,
+            .opp-grid,
+            .wn-grid,
+            .ask-grid,
+            .founding-team-grid {
+                grid-template-columns: 1fr;
+            }
+            .solution-list { grid-template-columns: 1fr; }
+
+            /* Stats */
+            .stats-row { flex-direction: column; gap: 32px; }
+            .stat-divider { display: none; }
+            .st-num { font-size: 48px; }
+
+            /* CTA Form */
+            .cta-form { flex-direction: column; align-items: stretch; }
+            .cta-input { width: 100%; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions a, .btn-hero { width: 100%; text-align: center; }
+
+            /* Footer */
+            .footer-top { flex-direction: column; gap: 32px; }
+            .footer-links-grid { flex-wrap: wrap; gap: 32px; }
+            .f-logo { font-size: 22px; }
+            .fl-col { min-width: 40%; }
+
+            /* Price cards */
+            .price-card { padding: 28px 24px; }
+            .ac-amount { font-size: 36px !important; }
+
+            /* Ask cards */
+            .ask-card { padding: 32px 24px; }
+
+            /* Contact form */
+            .contact-form { margin: 32px 16px 0; }
+
+            /* Traction layout */
+            .traction-layout { max-width: 100%; }
+        }
+
+        /* ---- Small phones (≤ 480px) ---- */
+        @media (max-width: 480px) {
+            .section-title, .cta-title, .hero-title { font-size: 28px !important; line-height: 1.2; }
+            .btn-early { display: inline-block; font-size: 12px; padding: 8px 14px; }
+            .scroller-item.active { font-size: 32px; }
+            .hero { padding: 60px 0 40px; }
+            .container { padding: 0 16px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Sign In Modal -->
+    <div id="signin-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close">&times;</div>
+            <div class="spinner"></div>
+            <div class="modal-title">Access Restricted</div>
+            <div class="modal-text">We are currently providing early access to a select group of researchers. Please email the team to request access, or wait for the official public announcement.</div>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank" class="btn-early" style="display:inline-block; margin-top:24px;">Email Team ORIN</a>
+        </div>
+    </div>
+
+
+    <!-- SECTION 1 -->
+    <div id="announcement-bar">
+        Orin is now in Early Access — Built for India's 7 lakh+ bioscience researchers
+        <div id="announcement-close">&times;</div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <nav>
+        <div class="container nav-inner">
+            <a href="landing.html" class="nav-logo-box">
+                <span class="nav-logo">Orin</span>
+                <span class="nav-sub">by RO Ecosystem</span>
+            </a>
+            <div class="nav-links">
+                <a href="landing.html">Platform</a>
+                <a href="technology.html">Technology</a>
+                <a href="landing.html#pricing">Pricing</a>
+                <a href="team.html">Team</a>
+                <a href="#" class="active">Investors</a>
+                <a href="landing.html">About</a>
+            </div>
+            <div class="nav-right">
+                <a href="landing.html" class="btn-signin">Sign In</a>
+                <a href="#contact" class="btn-early">Get Early Access</a>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- SECTION 3 -->
+    <section class="hero fade-in">
+        <div class="container">
+            <div class="hero-label">INVESTMENT & PARTNERSHIPS</div>
+            <h1 class="hero-title">Invest in India's Bioscience<br>AI Revolution.</h1>
+            <p class="hero-sub">We are building the AI of bioscience — for 7 lakh+ Indian researchers who have
+                never had access to world-class research tools. Join us early.</p>
+
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Partner With Us</a>
+                <a href="Orin_Investor_Deck%20-%202026.pdf" target="_blank" class="btn-outline-white">Download Investors Deck</a>
+            </div>
+            <div class="hero-stats">
+                &#8377; pricing /mon TBA &middot; 7L+ TAM &middot; MVP Live
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="opportunity-section">
+        <div class="container">
+            <div class="section-label blue fade-in">THE OPPORTUNITY</div>
+            <h2 class="section-title fade-in">A $3B+ market. Built for<br>researchers the world forgot.</h2>
+            <div class="section-sub fade-in">India produces the 3rd largest number of bioscience researchers globally.
+                Yet every single one of them is underserved — by price, by language, by relevance.</div>
+
+            <div class="opp-grid">
+                <div class="opp-card fade-in">
+                    <div class="oc-stat">7 Lakh+</div>
+                    <div class="oc-label">Bioscience researchers in India</div>
+                </div>
+                <div class="opp-card fade-in" style="transition-delay: 100ms;">
+                    <div class="oc-stat">&#8377; 1,00,000+</div>
+                    <div class="oc-label">What SciFinder costs per year</div>
+                </div>
+                <div class="opp-card fade-in" style="transition-delay: 200ms;">
+                    <div class="oc-stat">&#8377;TBA/mo</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="traction-section">
+        <div class="container">
+            <div class="section-label fade-in">TRACTION</div>
+            <h2 class="section-title fade-in">From concept to deployment. Built to scale.</h2>
+
+            <div class="traction-layout">
+                <div class="tr-list">
+                    <div class="tr-item fade-in">
+                        <div class="tr-check">&#10003;</div>
+                        <div>
+                            <div class="tr-title">FastAPI Backend Live</div>
+                            <div class="tr-desc">Smart routing architecture operational across Groq and Gemini APIs.
+                                Claude Sonnet integration ready and staged for deployment.</div>
+                        </div>
+                    </div>
+                    <div class="tr-item fade-in">
+                        <div class="tr-check">&#10003;</div>
+                        <div>
+                            <div class="tr-title">Orin AI Brain Deployed</div>
+                            <div class="tr-desc">Domain-specific reasoning architecture live. 4-layer scientific
+                                framework &mdash; Mechanism, Evidence, Clinical Relevance, and Limitations &mdash;
+                                embedded and active.</div>
+                        </div>
+                    </div>
+                    <div class="tr-item fade-in">
+                        <div class="tr-check">&#10003;</div>
+                        <div>
+                            <div class="tr-title">Multi-Model Architecture</div>
+                            <div class="tr-desc">~80% of queries handled free via Groq LLaMA3 and Gemini Flash. Claude
+                                reserved for complex scientific reasoning &mdash; cost-efficient by design.</div>
+                        </div>
+                    </div>
+                    <div class="tr-item fade-in">
+                        <div class="tr-check">&#10003;</div>
+                        <div>
+                            <div class="tr-title">Scientific Database Architecture Ready</div>
+                            <div class="tr-desc">PubMed, PubChem, ChEMBL, KEGG, and Semantic Scholar &mdash; fully
+                                mapped and integrated into Orin's research pipeline.</div>
+                        </div>
+                    </div>
+                    <div class="tr-item fade-in">
+                        <div class="tr-check">&#10003;</div>
+                        <div>
+                            <div class="tr-title">Indian Language Support</div>
+                            <div class="tr-desc">Sarvam AI STT/TTS scoped and staged for integration. Hindi, Telugu,
+                                Tamil, Kannada, and Bengali voice support in active development.</div>
+                        </div>
+                    </div>
+                    <div class="tr-item fade-in" style="border-bottom: none;">
+                        <div class="tr-check">&#10003;</div>
+                        <div>
+                            <div class="tr-title">Landing Page &amp; Investor Portal Live</div>
+                            <div class="tr-desc">Professional web presence live with product overview, pricing, and
+                                direct investor contact form operational.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDING TEAM SECTION -->
+    <section class="founding-team-section">
+        <div class="container">
+            <div class="section-label blue fade-in">FOUNDING TEAM</div>
+            <h2 class="section-title fade-in">Meet our people.</h2>
+            <div class="section-sub fade-in">A team at the intersection of biology, technology, and a shared belief that
+                research tools should be accessible to every scientist in India.</div>
+
+            <div class="founding-team-grid">
+
+                <div class="ft-card fade-in">
+                    <div class="ft-initials">RK</div>
+                    <div class="ft-name">Rahul Kota</div>
+                    <div class="ft-role">Founder &amp; CEO</div>
+                </div>
+
+                <div class="ft-card fade-in" style="transition-delay: 80ms;">
+                    <div class="ft-initials">RK</div>
+                    <div class="ft-name">Rihan Kota</div>
+                    <div class="ft-role">Co-Founder &amp; Board Advisor</div>
+                </div>
+
+                <div class="ft-card fade-in" style="transition-delay: 160ms;">
+                    <div class="ft-initials">AD</div>
+                    <div class="ft-name">Arkoparno Das</div>
+                    <div class="ft-role">Co-Founder &amp; Chief Scientific Officer</div>
+                </div>
+
+                <div class="ft-card fade-in" style="transition-delay: 240ms;">
+                    <div class="ft-initials">RC</div>
+                    <div class="ft-name">Rushi Chaganti</div>
+                    <div class="ft-role">Co-Founder &amp; Chief Technology Officer</div>
+                </div>
+
+                <div class="ft-card fade-in" style="transition-delay: 320ms;">
+                    <div class="ft-initials">AA</div>
+                    <div class="ft-name">Ajay Andhukuri</div>
+                    <div class="ft-role">Co-Founder &amp; Social Media, Marketing Head</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="why-now-section">
+        <div class="container">
+            <div class="section-label fade-in">WHY NOW</div>
+            <h2 class="section-title fade-in">The timing has never been better.</h2>
+
+            <div class="wn-grid">
+                <div class="wn-card fade-in">
+                    <div class="wn-num">01</div>
+                    <div class="wn-title">AI Has Reached Research Grade</div>
+                    <div class="wn-desc">Models like Claude Sonnet now reason at PhD level across complex scientific
+                        domains.</div>
+                </div>
+                <div class="wn-card fade-in" style="transition-delay: 100ms;">
+                    <div class="wn-num">02</div>
+                    <div class="wn-title">India's Pharma & Biotech Sector is Exploding</div>
+                    <div class="wn-desc">India is the 3rd largest pharma producer globally with 3,000+ FDA-approved
+                        plants.</div>
+                </div>
+                <div class="wn-card fade-in" style="transition-delay: 200ms;">
+                    <div class="wn-num">03</div>
+                    <div class="wn-title">Free APIs Changed Everything</div>
+                    <div class="wn-desc">PubMed, PubChem, ChEMBL — world-class databases now free to access
+                        programmatically.</div>
+                </div>
+                <div class="wn-card fade-in" style="transition-delay: 300ms;">
+                    <div class="wn-num">04</div>
+                    <div class="wn-title">No Credible Indian Competitor</div>
+                    <div class="wn-desc">Zero domain-specific bioscience AI exists for the Indian market. The gap is
+                        wide open.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="ask-section">
+        <div class="container">
+            <div class="section-label blue fade-in">THE ASK</div>
+            <h2 class="section-title white fade-in">Join us at the ground floor.</h2>
+            <div class="section-sub ask-sub fade-in">We are raising our first round to accelerate product development,
+                expand our team, and acquire our first 1,000 paying users.</div>
+
+            <div class="ask-grid">
+                <div class="ask-card fade-in">
+                    <div class="ac-label">SEED INVESTORS</div>
+                    <div class="ac-amount">&#8377;5L &ndash; &#8377;50L</div>
+                    <div class="ac-divider"></div>
+                    <ul class="ac-list">
+                        <li>Early equity stake in RO Ecosystem</li>
+                        <li>Investor name/logo on Orin website</li>
+                        <li>Monthly founder updates</li>
+                        <li>Strategic advisory role option</li>
+                        <li>First right of refusal on next round</li>
+                    </ul>
+                    <a href="#contact" class="btn-full btn-brand">Invest With Us</a>
+                </div>
+
+                <div class="ask-card fade-in" style="transition-delay: 100ms;">
+                    <div class="ac-label">STRATEGIC PARTNERS</div>
+                    <div class="ac-amount" style="font-size: 40px; margin-top: 8px;">Research Institutions & Labs</div>
+                    <div class="ac-divider"></div>
+                    <ul class="ac-list">
+                        <li>Free Institutional plan for your students</li>
+                        <li>Co-branding on Orin platform</li>
+                        <li>Your logo on Orin's partner wall</li>
+                        <li>Early access to all new features</li>
+                        <li>Revenue share on student referrals</li>
+                    </ul>
+                    <a href="#contact" class="btn-full btn-outline-brand">Become a Partner</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section class="partner-section">
+        <div class="container fade-in">
+            <div class="section-label fade-in">OUR PARTNERS</div>
+            <h2 class="pt-title">Growing together.</h2>
+            <div class="pt-sub">Partner and investor logos will appear here as we grow.</div>
+
+            <div class="pt-box">
+                <div class="pt-box-title">Your logo here.</div>
+                <div class="pt-box-desc">Be among the first to partner with Orin.</div>
+                <a href="#contact" class="btn-ghost-outline">Become a Partner &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section class="contact-section" id="contact">
+        <div class="container fade-in">
+            <div class="section-label fade-in">GET IN TOUCH</div>
+            <h2 class="section-title fade-in">Let's build this together.</h2>
+            <div class="section-sub fade-in">Whether you're an angel investor, VC, college, or biotech lab — we want to
+                hear from you.</div>
+
+            <form id="contact-form" class="contact-form fade-in" action="https://formspree.io/f/xlgojgqb" method="POST">
+                <input type="hidden" name="_subject" value="New Orin Investor/Partner Inquiry">
+                <input type="hidden" name="_replyto" value="">
+
+                <input type="text" name="name" class="cf-input" placeholder="Your Name" required>
+                <input type="email" name="email" class="cf-input" placeholder="Your Email" required>
+                <input type="text" name="organization" class="cf-input" placeholder="Organization / Institution">
+
+                <select name="type" class="cf-select" required>
+                    <option value="" disabled selected>I am a...</option>
+                    <option value="Angel Investor">Angel Investor</option>
+                    <option value="VC Fund">VC Fund</option>
+                    <option value="Biotech Company">Biotech Company</option>
+                    <option value="College/University">College/University</option>
+                    <option value="Research Lab">Research Lab</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <textarea name="message" class="cf-textarea" placeholder="Tell us about your interest..."
+                    required></textarea>
+
+                <button type="submit" class="cf-submit">Send Message &rarr;</button>
+                <div class="cf-alt">Or reach us directly: orchestration.ro@gmail.com</div>
+            </form>
+            <div id="cf-success">Thank you! Our team will reach out within 48 hours. &#128543;</div>
+            <!-- Using a generic smile unicode or praying hands &#128591; -->
+            <!-- Note: unicode for folded hands is &#128591; -->
+            <script>document.getElementById("cf-success").innerHTML = "Thank you! Our team will reach out within 48 hours. &#128591;";</script>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo-box">
+                    <div class="f-logo">Orin</div>
+                    <div class="f-sub">by RO Ecosystem</div>
+                    <div class="f-tagline">Illuminating your research.</div>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="fl-col">
+                        <div class="fl-title">Product</div>
+                        <a href="landing.html">Platform</a>
+                        <a href="landing.html#pricing">Pricing</a>
+                        <a href="#contact">Early Access</a>
+                    </div>
+                    <div class="fl-col">
+                        <div class="fl-title">Company</div>
+                        <a href="landing.html">About</a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=orchestration.ro@gmail.com" target="_blank">Contact</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="fl-col">
+                        <div class="fl-title">Follow</div>
+                        <a href="#">Twitter/X</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 RO Ecosystem. Built in India &#127470;&#127475;
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Announcement Bar Close
+        document.getElementById('announcement-close').addEventListener('click', function () {
+            document.getElementById('announcement-bar').style.display = 'none';
+        });
+
+        // Intersection Observer for fade-ins
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Form Submission is handled natively to Formspree.
+    </script>
+
+    <script>
+        // Sign In Modal Logic
+        document.querySelectorAll('.btn-signin').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modal = document.getElementById('signin-modal');
+                if(!modal) return;
+                modal.style.display = 'flex';
+                // Trigger reflow
+                void modal.offsetWidth;
+                modal.classList.add('show');
+            });
+        });
+        
+        const modalClose = document.querySelector('.modal-close');
+        if(modalClose) {
+            modalClose.addEventListener('click', function() {
+                const modal = document.getElementById('signin-modal');
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            });
+        }
+        
+        const signinModal = document.getElementById('signin-modal');
+        if(signinModal) {
+            signinModal.addEventListener('click', function(e) {
+                if(e.target === this) {
+                    this.classList.remove('show');
+                    setTimeout(() => this.style.display = 'none', 300);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+                this.classList.toggle('active');
+                const spans = this.querySelectorAll('span');
+                if (this.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    spans[0].style.transform = '';
+                    spans[1].style.opacity = '';
+                    spans[2].style.transform = '';
+                }
+            });
+            // Close menu on link click
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    hamburger.classList.remove('active');
+                    hamburger.querySelectorAll('span').forEach(s => s.style.transform = s.style.opacity = '');
+                });
+            });
+        }
+    </script>
+
+</body>
+
+</html>
