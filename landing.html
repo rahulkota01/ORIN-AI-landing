@@ -892,27 +892,65 @@
            FULL MOBILE / TABLET RESPONSIVE OVERHAUL
            ============================================ */
 
+        /* ============================================
+           REDESIGNED MOBILE NAVBAR
+           ============================================ */
+
         /* Hamburger Button */
         .hamburger {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
-            padding: 6px;
+            padding: 8px;
             background: none;
             border: none;
+            z-index: 1002;
+            position: relative;
         }
         .hamburger span {
             display: block;
-            width: 22px;
+            width: 24px;
             height: 2px;
             background-color: var(--text-main, #1a1a1a);
             border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
         }
-        /* Mobile nav drawer */
-        .mobile-nav-open .nav-links {
-            display: flex !important;
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5.5px, 5.5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5.5px, -5.5px);
+        }
+
+        /* Mobile nav backdrop overlay */
+        .mobile-nav-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-backdrop.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Mobile CTA inside drawer */
+        .mobile-nav-cta {
+            display: none;
         }
 
         /* ---- Tablet (≤ 992px) ---- */
@@ -949,10 +987,11 @@
         @media (max-width: 768px) {
             /* Navbar */
             .nav-inner {
-                height: auto;
+                height: 60px;
                 flex-wrap: nowrap;
-                padding: 14px 0;
+                padding: 0;
                 position: relative;
+                align-items: center;
             }
             .nav-logo-box {
                 flex-grow: 1;
@@ -968,31 +1007,79 @@
                 order: 4;
                 background: var(--bg-page, #F7F5F0);
                 border-top: 1px solid var(--border, #E5E0D8);
-                padding: 16px 0 8px;
-                gap: 4px;
+                gap: 0;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
                 z-index: 999;
-                padding: 12px 24px;
-                box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+                padding: 8px 0;
+                box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+                border-radius: 0 0 16px 16px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease, opacity 0.3s ease;
+                opacity: 0;
             }
             .nav-links.open {
                 display: flex !important;
+                max-height: 500px;
+                padding: 12px 0 16px;
+                opacity: 1;
             }
             .nav-links a {
-                padding: 10px 0;
-                border-bottom: 1px solid var(--border, #E5E0D8);
-                font-size: 15px;
+                padding: 14px 28px;
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--text-main, #1a1a1a);
+                border-bottom: none;
+                transition: background-color 0.2s ease, color 0.2s ease;
+                letter-spacing: 0.3px;
             }
-            .nav-links a:last-child { border-bottom: none; }
+            .nav-links a:hover,
+            .nav-links a:active {
+                background-color: rgba(74, 144, 217, 0.06);
+                color: var(--accent, #4A90D9);
+            }
+            .nav-links a.active {
+                color: var(--accent, #4A90D9);
+                font-weight: 600;
+                background-color: rgba(74, 144, 217, 0.06);
+                border-left: 3px solid var(--accent, #4A90D9);
+            }
+            /* Mobile CTA button inside drawer */
+            .mobile-nav-cta {
+                display: block;
+                margin: 8px 20px 4px;
+                background-color: var(--text-main, #1a1a1a);
+                color: #ffffff;
+                padding: 14px 24px;
+                border-radius: 10px;
+                font-size: 15px;
+                font-weight: 600;
+                text-align: center;
+                transition: opacity 0.2s;
+                letter-spacing: 0.3px;
+            }
+            .mobile-nav-cta:hover {
+                opacity: 0.9;
+            }
             .nav-right {
                 order: 2;
                 gap: 12px;
             }
-            .btn-early {
+            .nav-right .btn-early {
                 display: none;
+            }
+            .nav-right .btn-signin {
+                font-size: 13px;
+                padding: 6px 12px;
+                border: 1px solid var(--border, #E5E0D8);
+                border-radius: 6px;
+                transition: background-color 0.2s;
+            }
+            .nav-right .btn-signin:hover {
+                background-color: rgba(0,0,0,0.04);
             }
 
             /* Hero */
@@ -1057,10 +1144,18 @@
         /* ---- Small phones (≤ 480px) ---- */
         @media (max-width: 480px) {
             .section-title, .cta-title, .hero-title { font-size: 28px !important; line-height: 1.2; }
-            .btn-early { display: inline-block; font-size: 12px; padding: 8px 14px; }
             .scroller-item.active { font-size: 32px; }
             .hero { padding: 60px 0 40px; }
             .container { padding: 0 16px; }
+            .nav-links a {
+                padding: 13px 20px;
+                font-size: 15px;
+            }
+            .mobile-nav-cta {
+                margin: 6px 16px 4px;
+                padding: 13px 20px;
+                font-size: 14px;
+            }
         }
 
     </style>
@@ -1101,6 +1196,7 @@
                 <a href="team.html">Team</a>
                 <a href="investors.html">Investors</a>
                 <a href="#">About</a>
+                <a href="#cta" class="mobile-nav-cta">Get Early Access →</a>
             </div>
             <div class="nav-right">
                 <a href="#" class="btn-signin">Sign In</a>
@@ -1109,6 +1205,7 @@
             <button class="hamburger" id="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
 
     <!-- SECTION 3 -->
     <section class="hero">
@@ -1460,33 +1557,51 @@
     </script>
 
     <script>
-        // Hamburger Menu Toggle
+        // Hamburger Menu Toggle — Redesigned
         const hamburger = document.getElementById('hamburger-btn');
         const navLinks = document.querySelector('.nav-links');
+        const backdrop = document.getElementById('mobile-nav-backdrop');
+
+        function closeMobileNav() {
+            if (!navLinks || !hamburger) return;
+            navLinks.classList.remove('open');
+            hamburger.classList.remove('active');
+            if (backdrop) backdrop.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function openMobileNav() {
+            if (!navLinks || !hamburger) return;
+            navLinks.style.display = 'flex';
+            // Force reflow for animation
+            void navLinks.offsetHeight;
+            navLinks.classList.add('open');
+            hamburger.classList.add('active');
+            if (backdrop) backdrop.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
         if (hamburger && navLinks) {
             hamburger.addEventListener('click', function() {
-                navLinks.classList.toggle('open');
-                this.classList.toggle('active');
-                const spans = this.querySelectorAll('span');
-                if (this.classList.contains('active')) {
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                if (navLinks.classList.contains('open')) {
+                    closeMobileNav();
                 } else {
-                    spans[0].style.transform = '';
-                    spans[1].style.opacity = '';
-                    spans[2].style.transform = '';
+                    openMobileNav();
                 }
             });
             // Close menu on link click
             navLinks.querySelectorAll('a').forEach(a => {
-                a.addEventListener('click', () => {
-                    navLinks.classList.remove('open');
-                    hamburger.classList.remove('active');
-                    hamburger.querySelectorAll('span').forEach(s => s.style.transform = s.style.opacity = '');
-                });
+                a.addEventListener('click', () => closeMobileNav());
             });
         }
+        // Close on backdrop click
+        if (backdrop) {
+            backdrop.addEventListener('click', closeMobileNav);
+        }
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeMobileNav();
+        });
     </script>
 
 </body>
