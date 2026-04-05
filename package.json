@@ -1,0 +1,11 @@
+{
+  "name": "orin-bioscience",
+  "version": "1.0.0",
+  "description": "Orin Bioscience AI Copilot",
+  "scripts": {
+    "dev": ".\\venv\\Scripts\\python -m uvicorn main:app --reload",
+    "serve:ui": "npx serve . -p 3000"
+  },
+  "author": "RO Ecosystem",
+  "license": "ISC"
+}
